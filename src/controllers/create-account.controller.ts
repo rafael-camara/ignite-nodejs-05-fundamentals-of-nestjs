@@ -13,11 +13,11 @@ import { z } from 'zod'
 
 const createAccountBodySchema = z.object({
   name: z.string().min(3),
-  email: z.string().email(),
+  email: z.email(),
   password: z.string().min(6),
 })
 
-type CreateAccountBody = z.infer<typeof createAccountBodySchema>
+type CreateAccountBodySchema = z.infer<typeof createAccountBodySchema>
 
 @Controller('/accounts')
 export class CreateAccountController {
@@ -26,7 +26,7 @@ export class CreateAccountController {
   @Post()
   @HttpCode(201)
   @UsePipes(new ZodValidationPipe(createAccountBodySchema))
-  async handle(@Body() body: CreateAccountBody) {
+  async handle(@Body() body: CreateAccountBodySchema) {
     const { name, email, password } = body
 
     const userWithSameEmail = await this.prisma.user.findUnique({
