@@ -4,8 +4,7 @@ import { PrismaClient } from 'generated/prisma/index.js'
 @Injectable()
 export class PrismaService
   extends PrismaClient
-  implements OnModuleInit, OnModuleDestroy
-{
+  implements OnModuleInit, OnModuleDestroy {
   constructor() {
     super({
       log: ['warn', 'error'],
