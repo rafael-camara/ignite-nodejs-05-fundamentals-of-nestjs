@@ -27,6 +27,7 @@
     },
     "types": [
       "vitest/globals",
-    ]
+    ],
+    "typeRoots": ["./src/@types", "./node_modules"],
   }
 }
