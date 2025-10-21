@@ -25,14 +25,14 @@ beforeAll(async () => {
 
   process.env.DATABASE_URL = databaseURL
 
-  console.log(`🧪 Using test schema: ${schemaId}`)
+  // console.log(`🧪 Using test schema: ${schemaId}`)
 
   // execSync('pnpm prisma migrate deploy')
-  execSync('pnpm prisma db push', { stdio: 'inherit' })
+  execSync('pnpm prisma db push --skip-generate > /dev/null 2>&1')
 })
 
 afterAll(async () => {
-  console.log(`🗑️ Dropping test schema: ${schemaId}`)
+  // console.log(`🗑️ Dropping test schema: ${schemaId}`)
 
   await prisma.$executeRawUnsafe(`DROP SCHEMA IF EXISTS "${schemaId}" CASCADE`)
   await prisma.$disconnect()
