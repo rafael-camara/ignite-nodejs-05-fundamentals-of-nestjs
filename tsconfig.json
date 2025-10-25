@@ -27,7 +27,8 @@
     },
     "types": [
       "vitest/globals",
+      "multer"
     ],
-    "typeRoots": ["./src/@types", "./node_modules"],
+    "typeRoots": ["./src/@types", "./node_modules", "./node_modules/@types"],
   }
 }

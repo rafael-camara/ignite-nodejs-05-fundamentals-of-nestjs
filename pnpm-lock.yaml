@@ -72,6 +72,9 @@ importers:
       '@types/express':
         specifier: ^5.0.0
         version: 5.0.3
+      '@types/multer':
+        specifier: ^2.0.0
+        version: 2.0.0
       '@types/node':
         specifier: ^22.10.7
         version: 22.18.6
@@ -1051,6 +1054,9 @@ packages:
   '@types/mime@1.3.5':
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
 
+  '@types/multer@2.0.0':
+    resolution: {integrity: sha512-C3Z9v9Evij2yST3RSBktxP9STm6OdMc5uR1xF1SGr98uv8dUlAL2hqwrZ3GVB3uyMyiegnscEK6PGtYvNrjTjw==}
+
   '@types/node@22.18.6':
     resolution: {integrity: sha512-r8uszLPpeIWbNKtvWRt/DbVi5zbqZyj1PTmhRMqBMvDnaz1QpmSKujUtJLrqGZeoM8v72MfYggDceY4K1itzWQ==}
 
@@ -1825,8 +1831,8 @@ packages:
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
 
-  eslint-plugin-react-hooks@6.2.0-canary-4fdf7cf2-20251003:
-    resolution: {integrity: sha512-xSf2ONMn6lA7wbOk4utntRpIbYWR9bShdm1CAE3tPzX6g30BzbiknNmwtEQcEo2NAwT8Ns57J+p0oyFjE5Yk+g==}
+  eslint-plugin-react-hooks@7.0.0-canary-71b3a03c-20251021:
+    resolution: {integrity: sha512-7EwZO7Drxeeq1g1ZNcIu93EEm0BvfBXZmUE+psxQCvpyyVfs7096NVcTuiuxY5aQwCGFdrVrSsgrSMHAFA6TUA==}
     engines: {node: '>=18'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -2150,6 +2156,12 @@ packages:
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
+
+  hermes-estree@0.25.1:
+    resolution: {integrity: sha512-0wUoCcLp+5Ev5pDW2OriHC2MJCbwLwuRx+gAqMTOkGKJJiBCLjtrvy4PWUGn6MIVefecRpzoOZ/UV6iGdOr+Cw==}
+
+  hermes-parser@0.25.1:
+    resolution: {integrity: sha512-6pEjquH3rqaI6cYAXYPcz9MS4rY6R4ngRgrgfDshRptUZIc3lw0MCIJIGDj9++mfySOuPTHB4nrSW99BCvOPIA==}
 
   html-escaper@2.0.2:
     resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}
@@ -4192,7 +4204,7 @@ snapshots:
       '@eslint/js': 9.36.0
       '@types/eslint__js': 8.42.3
       eslint: 9.36.0(jiti@2.6.0)
-      eslint-plugin-react-hooks: 6.2.0-canary-4fdf7cf2-20251003(eslint@9.36.0(jiti@2.6.0))
+      eslint-plugin-react-hooks: 7.0.0-canary-71b3a03c-20251021(eslint@9.36.0(jiti@2.6.0))
       globals: 15.15.0
       neostandard: 0.11.9(eslint@9.36.0(jiti@2.6.0))(typescript@5.9.2)
       typescript-eslint: 8.45.0(eslint@9.36.0(jiti@2.6.0))(typescript@5.9.2)
@@ -4416,6 +4428,10 @@ snapshots:
   '@types/methods@1.1.4': {}
 
   '@types/mime@1.3.5': {}
+
+  '@types/multer@2.0.0':
+    dependencies:
+      '@types/express': 5.0.3
 
   '@types/node@22.18.6':
     dependencies:
@@ -5394,11 +5410,12 @@ snapshots:
       '@eslint-community/eslint-utils': 4.9.0(eslint@9.36.0(jiti@2.6.0))
       eslint: 9.36.0(jiti@2.6.0)
 
-  eslint-plugin-react-hooks@6.2.0-canary-4fdf7cf2-20251003(eslint@9.36.0(jiti@2.6.0)):
+  eslint-plugin-react-hooks@7.0.0-canary-71b3a03c-20251021(eslint@9.36.0(jiti@2.6.0)):
     dependencies:
       '@babel/core': 7.28.4
       '@babel/parser': 7.28.4
       eslint: 9.36.0(jiti@2.6.0)
+      hermes-parser: 0.25.1
       zod: 4.1.11
       zod-validation-error: 4.0.2(zod@4.1.11)
     transitivePeerDependencies:
@@ -5816,6 +5833,12 @@ snapshots:
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
+
+  hermes-estree@0.25.1: {}
+
+  hermes-parser@0.25.1:
+    dependencies:
+      hermes-estree: 0.25.1
 
   html-escaper@2.0.2: {}
 
