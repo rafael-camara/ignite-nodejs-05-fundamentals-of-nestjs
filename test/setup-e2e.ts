@@ -1,3 +1,4 @@
+import { DomainEvents } from '@/core/events/domain-events'
 import { config } from 'dotenv'
 
 import { PrismaClient } from 'generated/prisma/index.js'
@@ -27,6 +28,8 @@ beforeAll(async () => {
   const databaseURL = generateUniqueDatabaseURL(schemaId)
 
   process.env.DATABASE_URL = databaseURL
+
+  DomainEvents.shouldRun = false
 
   // console.log(`🧪 Using test schema: ${schemaId}`)
 
