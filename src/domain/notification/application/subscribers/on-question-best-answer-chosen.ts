@@ -2,8 +2,10 @@ import { DomainEvents } from '@/core/events/domain-events'
 import { EventHandler } from '@/core/events/event-handler'
 import { AnswersRepository } from '@/domain/forum/application/repositories/answers-repository'
 import { QuestionBestAnswerChoseEvent } from '@/domain/forum/enterprise/events/question-best-answer-chose-events'
+import { Injectable } from '@nestjs/common'
 import { SendNotificationUseCase } from '../use-case/send-notification'
 
+@Injectable()
 export class OnQuestionBestAnswerChosen implements EventHandler {
   constructor(
     private answersRepository: AnswersRepository,
@@ -31,7 +33,9 @@ export class OnQuestionBestAnswerChosen implements EventHandler {
       await this.sendNotificationUseCase.execute({
         recipientId: answer.authorId.toString(),
         title: 'Sua resposta foi escolhida!',
-        content: `A resposta que você enviou em "${question.title.substring(0, 40).concat('...')}" foi escolhida pelo autor!`,
+        content: `A resposta que você enviou em "${question.title
+          .substring(0, 40)
+          .concat('...')}" foi escolhida pelo autor!`,
       })
     }
   }
