@@ -5,8 +5,7 @@ import { CommentWithAuthor } from '@/domain/forum/enterprise/entities/value-obje
 import { InMemoryStudentsRepository } from './in-memory-students-repository'
 
 export class InMemoryQuestionCommentsRepository
-  implements QuestionCommentsRepository
-{
+implements QuestionCommentsRepository {
   public items: QuestionComment[] = []
 
   constructor(private studentsRepository: InMemoryStudentsRepository) {}

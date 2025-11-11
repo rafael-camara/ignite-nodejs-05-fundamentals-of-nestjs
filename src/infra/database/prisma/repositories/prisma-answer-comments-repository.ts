@@ -9,8 +9,7 @@ import { PrismaService } from '../prisma.service'
 
 @Injectable()
 export class PrismaAnswerCommentsRepository
-  implements AnswerCommentsRepository
-{
+implements AnswerCommentsRepository {
   constructor(private prisma: PrismaService) {}
 
   async findById(id: string): Promise<AnswerComment | null> {

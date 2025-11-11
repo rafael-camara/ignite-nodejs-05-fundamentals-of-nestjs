@@ -17,7 +17,9 @@ export class PrismaStudentsRepository implements StudentsRepository {
       },
     })
 
-    return student ? PrismaStudentMapper.toDomain(student) : null
+    return student
+      ? PrismaStudentMapper.toDomain(student)
+      : null
   }
 
   async create(student: Student): Promise<void> {
